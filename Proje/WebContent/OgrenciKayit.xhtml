@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<f:view>
+		<h:form>
+			<h:panelGrid columns="2">
+Ad:<h:inputText value="#{ogrenciKayitView.ogrenciKayit.ad}" />
+Soyad:<h:inputText value="#{ogrenciKayitView.ogrenciKayit.soyad}" />
+Okul NO:<h:inputText value="#{ogrenciKayitView.ogrenciKayit.okulNO}" />
+Ogrenim Turu:<h:selectOneRadio value="#{ogrenciKayitView.ogrenciKayit.ogrenimTuru}">
+<f:selectItem itemLabel="Birinci Ogretim" itemValue="Birinci Ogretim"/>
+<f:selectItem itemLabel="Ikinci Ogretim" itemValue="Ikinci Ogretim"/>
+</h:selectOneRadio>
+				<h:commandButton action="#{ogrenciKayitView.kaydet()}" value="KAYDET"
+					rendered="#{ogrenciKayitView.ogrenciKayit.ad==null}" />
+				<h:commandButton action="#{ogrenciKayitView.guncelle()}" value="Guncelle"
+					rendered="#{ogrenciKayitView.ogrenciKayit.ad!=null}" />
+			</h:panelGrid>
+			<p:dataTable value="#{ogrenciKayitView.listele}" var="ogr">
+				<f:facet name="header">Ogrenci Kayit Listesi</f:facet>
+				<p:column>
+					<f:facet name="header">Kayıt Sil</f:facet>
+					<h:commandLink value="Sec">
+						<f:setPropertyActionListener value="#{ogr}"
+							target="#{ogrenciKayitView.ogrenciKayit}" />
+					</h:commandLink>
+				</p:column>
+				<p:column>
+					<f:facet name="header">Kayıt Güncelle</f:facet>
+					<h:commandLink action="#{ogrenciKayitView.sil()}" value="Sil">
+						<f:setPropertyActionListener value="#{ogr}"
+							target="#{ogrenciKayitView.ogrenciKayit}" />
+					</h:commandLink>
+				</p:column>
+				<p:column>
+					<f:facet name="header">Ad</f:facet>
+					<h:outputText value="#{ogr.ad}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Soyad</f:facet>
+					<h:outputText value="#{ogr.soyad}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Okul NO</f:facet>
+					<h:outputText value="#{ogr.okulNO}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Ogrenim Turu</f:facet>
+					<h:outputText value="#{ogr.ogrenimTuru}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</f:view>
+</body> 
+</html>

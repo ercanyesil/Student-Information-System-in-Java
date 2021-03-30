@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#Giris.xhtml" PATH="/Giris.xhtml"
+  SHAPE="239,164,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Giris.xhtml:0" NAME="item"
+   PATH="/Giris.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="dogru::#DersKayit.xhtml" NAME="output"
+    PATH="/DersKayit.xhtml" TARGET="rules:#DersKayit.xhtml"
+    TITLE="dogru" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="yanlis::#OgrenciKayit.xhtml" NAME="output1"
+    PATH="/OgrenciKayit.xhtml" TARGET="rules:#OgrenciKayit.xhtml"
+    TITLE="yanlis" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#DersKayit.xhtml" PATH="/DersKayit.xhtml"
+  SHAPE="618,142,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#OgrenciKayit.xhtml"
+  PATH="/OgrenciKayit.xhtml" SHAPE="408,376,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+</PROCESS>

@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<f:view>
+<h:form>
+<h:panelGrid columns="2">
+Ad:<h:inputText value="#{dersKayitView.dersKayit.ad}"/>
+Soyad:<h:inputText value="#{dersKayitView.dersKayit.soyad}"/>
+Okul NO:<h:inputText value="#{dersKayitView.dersKayit.okulNO}"/>
+Ders Secimi:<h:selectOneMenu value="#{dersKayitView.dersKayit.dersSecimi}">
+<f:selectItem itemValue="Kurumsal Java"/>
+<f:selectItem itemValue="Nesneye Dayalı Programlama"/>
+<f:selectItem itemValue="Algoritma 2"/>
+<f:selectItem itemValue="Ileri Java"/>
+<f:selectItem itemValue="Bitirme Tezi"/>
+</h:selectOneMenu>
+Ogrenim Turu:<h:selectOneRadio value="#{dersKayitView.dersKayit.ogrenimTuru}">
+<f:selectItem itemLabel="Birinci Ogretim" itemValue="Birinci Ogretim"/>
+<f:selectItem itemLabel="Ikinci Ogretim" itemValue="Ikinci Ogretim"/>
+</h:selectOneRadio>
+Ogrenci Ad:<h:inputText value="#{dersKayitView.ogrenciAd}"/>
+Ogrenci Soyad:<h:inputText value="#{dersKayitView.ogrenciSoyad}"/>
+<h:commandButton action="#{dersKayitView.kaydet()}" value="Kaydet" rendered="#{dersKayitView.dersKayit.ad==null}"/>
+<h:commandButton action="#{dersKayitView.duzenle()}" value="Guncelle" rendered="#{dersKayitView.dersKayit.ad!=null}"/>
+<h:commandButton  value="Ara" />
+</h:panelGrid>
+<p:dataTable value="#{dersKayitView.listele}" var="ogr">
+	<f:facet name="header">Ders Secim Listesi</f:facet>
+	<p:column>
+		<f:facet name="header">Kayit Guncelle</f:facet>
+		<h:commandLink value="Sec">
+		<f:setPropertyActionListener value="#{ogr}" target="#{dersKayitView.dersKayit}" />
+		</h:commandLink>
+	</p:column>
+	<p:column>
+		<f:facet name="header">Sil</f:facet>
+		<h:commandLink action="#{dersKayitView.sil()}" value="Sil">
+		<f:setPropertyActionListener value="#{ogr}" target="#{dersKayitView.dersKayit}" />
+		</h:commandLink>
+	</p:column>
+	<p:column>
+		<f:facet name="header">Ad</f:facet>
+		<h:outputText value="#{ogr.ad}"/>
+	</p:column>
+	<p:column>
+		<f:facet name="header">Soyad</f:facet>
+		<h:outputText value="#{ogr.soyad}"/>
+	</p:column>
+	<p:column>
+		<f:facet name="header">Okul NO</f:facet>
+		<h:outputText value="#{ogr.okulNO}"/>
+	</p:column>
+	<p:column>
+		<f:facet name="header">Ders Secimi</f:facet>
+		<h:outputText value="#{ogr.dersSecimi}"/>
+	</p:column>
+	<p:column>
+		<f:facet name="header">Ogrenim Turu</f:facet>
+		<h:outputText value="#{ogr.ogrenimTuru}"/>
+	</p:column>
+</p:dataTable>
+
+
+<p:dataTable value="#{dersKayitView.listeAra}" var="ogr">
+	<f:facet name="header">Arama Sonucunuz</f:facet>
+	
+	
+	<p:column>
+		<f:facet name="header">Ad</f:facet>
+		<h:outputText value="#{ogr.ad}"/>
+	</p:column>
+	<p:column>
+		<f:facet name="header">Soyad</f:facet>
+		<h:outputText value="#{ogr.soyad}"/>
+	</p:column>
+	<p:column>
+		<f:facet name="header">Okul NO</f:facet>
+		<h:outputText value="#{ogr.okulNO}"/>
+	</p:column>
+	<p:column>
+		<f:facet name="header">Ders Secimi</f:facet>
+		<h:outputText value="#{ogr.dersSecimi}"/>
+	</p:column>
+	<p:column>
+		<f:facet name="header">Ogrenim Turu</f:facet>
+		<h:outputText value="#{ogr.ogrenimTuru}"/>
+	</p:column>
+</p:dataTable>
+</h:form>
+</f:view>
+</body> 
+</html>
